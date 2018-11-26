@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    publicPath: 'blazhko/dist/',
     filename: 'build.js'
   },
   module: {
@@ -77,3 +77,11 @@ if (process.env.NODE_ENV === 'production') {
     })
   ])
 }
+const setPublicPath = () => {
+  let env = NODE_ENV;
+  if (env === 'production') {
+    return 'https://v-blazhko.github.io/blazhko/';
+  } else {
+    return '/';
+  }
+};
