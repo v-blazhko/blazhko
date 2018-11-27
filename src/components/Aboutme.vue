@@ -31,7 +31,7 @@ export default {
 	padding: 0.5em 0em 1em;
 }
 .back {
-	background-image: url('/static/img/back.jpg');
+	background-image: url('static/img/back.jpg');
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
