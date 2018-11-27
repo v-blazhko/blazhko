@@ -6,7 +6,7 @@
 				<p class="lead">{{$lang.messages.essay}}</p>
 				<hr class="my-4">
 				<p>{{$lang.messages.descr}}</p>
-				<b-btn variant="info" class="m-1" target="_blank" href="../../static/CV_Veronika_Blazhko.pdf"><i class="far fa-file-alt"></i> {{$lang.messages.cv}}</b-btn>
+				<b-btn variant="info" class="m-1" target="_blank" href="../static/CV_Veronika_Blazhko.pdf"><i class="far fa-file-alt"></i> {{$lang.messages.cv}}</b-btn>
 				<b-btn variant="dark" class="m-1" target="_blank" href="https://github.com/v-blazhko"><i class="fab fa-github"></i> {{$lang.messages.github}}</b-btn>
 				<b-btn variant="light" class="m-1" href="#contact"><i class="far fa-comment"></i> {{$lang.messages.sendmsg}}</b-btn>
 			</div>
