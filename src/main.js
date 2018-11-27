@@ -12,7 +12,7 @@ import Skill from '../src/components/Skill.vue'
 
 var Lang = require('vuejs-localization');
 Vue.use(BootstrapVue)
-Vue.http.options.root = 'https://v-blazhko.github.io/blazhko/';
+//Vue.http.options.root = 'https://v-blazhko.github.io/blazhko/';
 Vue.config.productionTip = false
 Vue.component('Aboutme', Aboutme)
 Vue.component('Navbar', Navbar)
