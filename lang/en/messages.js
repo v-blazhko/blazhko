@@ -1,6 +1,6 @@
 module.exports = {
     hello_world: 'Hello!',
-    essay: 'My name is Veronica Blazhko, I am a Frontend & Backend developer',
+    essay: 'I am Veronica Blazhko, a Frontend & Backend developer',
     descr: 'Here you can get to know me better and contact me',
     cv: 'Download CV',
     github: 'View GitHub',
