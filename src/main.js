@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import BootstrapVue from "bootstrap-vue"
+import Meta from 'vue-meta'
 import App from '../src/App.vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -9,13 +10,26 @@ import Myfooter from '../src/components/Myfooter.vue'
 import Contactform from '../src/components/Contactform.vue'
 import Game from '../src/components/Game.vue'
 import Skill from '../src/components/Skill.vue'
+import axios from 'axios'
+import VueYaMetrica from 'vue-ya-metrica'
+import VueAxios from 'vue-axios'
+import VueYandexMetrika from 'vue-yandex-metrika'     
+Vue.prototype.$axios = axios
+window.axios = require('axios');
 
 var Lang = require('vuejs-localization');
+
+Vue.use(VueYandexMetrika, {
+    id: 48711056,
+    env: process.env.NODE_ENV
+})
 Vue.use(BootstrapVue)
-Vue.http.options.root = 'https://v-blazhko.github.io/blazhko/';
+Vue.use(Meta)
+Vue.use(VueAxios, axios)
 Vue.config.productionTip = false
 Vue.component('Aboutme', Aboutme)
 Vue.component('Navbar', Navbar)
+Vue.component('VueYaMetrica', VueYaMetrica)
 Vue.component('Contactform', Contactform)
 Vue.component('Game', Game)
 Vue.component('Skill', Skill)
