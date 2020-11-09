@@ -6,11 +6,8 @@
 				<ul class="row" style="display:flex;">
 					<li class="col-lg-12 col-md-6 col-sm-6 col-xs-6"><i class="fas fa-map-marker-alt mr-2"></i>   Location: <a href="https://www.google.fi/maps/place/%D0%A2%D0%B0%D0%BC%D0%BF%D0%B5%D1%80%D0%B5/@61.6319675,23.5501175,10z/data=!4m5!3m4!1s0x468edf554593da5d:0x6adfe3bd1e0b22c0!8m2!3d61.4977524!4d23.7609535" target="_blank">Tampere</a></li>
 					<li class="col-lg-12 col-md-6 col-sm-6 col-xs-6"><i class="fa fa-envelope mr-2"></i>   Email: <a href="mailto:veronica@blazhko.tech" target="_blank">veronica@blazhko.tech</a></li>
-					
 					<li  class="col-lg-12 col-md-6 col-sm-6 col-xs-6"><i class="fab fa-linkedin-in mr-2"></i>   LinkedIn: <a href="https://linkedin.com/in/v-blazhko/" target="_blank">v-blazhko</a></li>
-
 					<li class="col-lg-12 col-md-6 col-sm-6 col-xs-6"><i class="fab fa-github mr-2"></i>   Github: <a href="https://github.com/v-blazhko/" target="_blank">v-blazhko</a></li>
-
 					<li class="col-lg-12 col-md-6 col-sm-6 col-xs-6"><i class="fab fa-vk mr-2"></i>   VK: <a href="https://vk.com/v_blazhko" target="_blank">v_blazhko</a></li>
 				</ul>
 			</div>
@@ -71,9 +68,8 @@
 
 	// our methods
 	methods: {
-		handleError: function(error) {;
+		handleError: function(error) {
 			this.err = this.strip(error);
-			
 		},
 
 		handleResponse: function(response) {
@@ -144,7 +140,7 @@ ul li {
 }
 
 i.fas, i.fa, i.fab {
-	padding: 0px 1em;
+	padding: 0px 8px 0px 8px;
 	max-width: 2em;
 }
 

@@ -130,7 +130,8 @@
         data() {
             return {
                 msg: 'Welcome to Your Vue.js App',
-                counter: 0
+                counter: 0,
+                publicPath: process.env.BASE_URL
             }
         },
 
@@ -156,6 +157,7 @@
 
     @import "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css";
     @import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css";
+    @import "https://kit.fontawesome.com/e80a83c8f1.js";
 
     h1, h2 {
         font-weight: normal;

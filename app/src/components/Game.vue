@@ -11,7 +11,7 @@
 			<div id="div1">
 				<button type="submit" @click="updateCount()" id="clickButton">
 				</button>
-				<img id="img1" src="static/img/giphy.gif" >
+				<img id="img1" src="/img/giphy.gif" >
 			</div>
 
 			<!-- Second status  -->
@@ -67,7 +67,7 @@
 						var stat = document.getElementById("status");
 						stat.innerHTML = '<h2>Game Over</h2>';
 					} else {
-						var stat = document.getElementById("status");
+						stat = document.getElementById("status");
 						stat.innerHTML = '<h2></h2>';
 					}
 				}
@@ -89,7 +89,7 @@
 
 				var color = this.colors[ Math.round( Math.random()*(this.colors.length-1) ) ];
 				console.log(color);
-				var button = document.getElementById("clickButton");
+				button = document.getElementById("clickButton");
 				button.style.backgroundColor = color;
 				console.log(button.style.width);
 				this.width = this.width + 1;

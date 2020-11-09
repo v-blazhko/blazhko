@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from 'vue/dist/vue.js'
 import BootstrapVue from "bootstrap-vue"
 import Meta from 'vue-meta'
 import App from '../src/App.vue'
