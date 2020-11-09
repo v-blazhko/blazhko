@@ -24,7 +24,7 @@ jobs:
           passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
           port: 22
           source: "app,backend,nginx,prod.Dockerfile,nginx.conf,prod.docker-compose.yml"
-          target: "/var/www/app"
+          target: "www/app"
 
       - name: Docker-compose up via ssh
         uses: garygrossgarten/github-action-ssh@release
