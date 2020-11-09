@@ -11,7 +11,7 @@
 			<div id="div1">
 				<button type="submit" @click="updateCount()" id="clickButton">
 				</button>
-				<img id="img1" src="/img/giphy.gif" >
+				<img id="img1" src="img/giphy.gif" >
 			</div>
 
 			<!-- Second status  -->
