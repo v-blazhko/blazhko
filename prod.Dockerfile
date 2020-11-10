@@ -15,7 +15,7 @@ COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 RUN rm -rf /usr/share/nginx/html/*
 # Copy from the stahge 1
 
-COPY --from=build /app/static /etc/nginx/html/static
+COPY --from=build /app/static /etc/nginx/html/
 COPY --from=build /app/public /etc/nginx/html/public
 COPY --from=build /app/dist /etc/nginx/html
 EXPOSE 80
