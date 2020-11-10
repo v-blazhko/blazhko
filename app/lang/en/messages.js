@@ -1,6 +1,6 @@
 module.exports = {
     hello_world: 'Hello!',
-    essay: 'I am Veronica Blazhko, a Frontend & Backend developer',
+    essay: 'I am Veronica Blazhko, a backend developer and IoT enthusiast',
     descr: 'Here you can get to know me better and contact me',
     cv: 'Download CV',
     github: 'View GitHub',
@@ -12,6 +12,14 @@ module.exports = {
     send: 'Send message',
     skill: 'Key skills',
     exp: {
+        nokia: {
+            pos: 'Junior Software Engineer',
+            place: 'Nokia Software',
+            time: 'October 2019 – now',
+            task1: '- backend development with Golang, Python',
+            task2: '- CM, PM, FM automation',
+            task3: '- ML automation'
+        },
         beauit: {
             pos: 'Junior Backend Developer',
             place: 'Tektosoft (BeauIT)',

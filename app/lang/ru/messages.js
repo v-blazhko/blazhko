@@ -12,6 +12,14 @@ module.exports = {
     send: 'Отправить сообщение',
     skill: 'Ключевые навыки',
     exp: {
+        nokia: {
+            pos: 'Junior Software Engineer',
+            place: 'Nokia Software',
+            time: 'October 2019 – now',
+            task1: '- backend development with Golang, Python',
+            task2: '- CM, PM, FM automation',
+            task3: '- ML automation'
+        },
         beauit: {
             pos: 'Junior бэкенд-разработчик',
             place: 'Tektosoft (BeauIT)',
