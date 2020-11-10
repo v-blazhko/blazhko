@@ -18,4 +18,3 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build /app/public /etc/nginx/html/
 COPY --from=build /app/dist /etc/nginx/html
 EXPOSE 80
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
