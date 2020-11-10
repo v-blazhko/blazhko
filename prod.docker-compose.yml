@@ -12,7 +12,7 @@ services:
     environment:
       CERTBOT_EMAIL: veronica@blazhko.tech
     volumes:
-      - ./nginx:/etc/nginx/user.conf.d:ro
-      - letsencrypt:/etc/letsencrypt
+      - ./nginx:/etc/nginx/user.conf.d:Z
+      - letsencrypt:/etc/letsencrypt:Z
 volumes:
   letsencrypt:
