@@ -9,7 +9,7 @@ COPY ./app /app
 RUN npm run build
 
 # production environment
-FROM nginx:1.16.0-alpine
+FROM staticfloat/nginx-certbot
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 ## Remove default nginx index page
 RUN rm -rf /usr/share/nginx/html/*
