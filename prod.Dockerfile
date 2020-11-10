@@ -10,6 +10,7 @@ RUN npm run build
 
 # production environment
 FROM staticfloat/nginx-certbot
+USER root
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 ## Remove default nginx index page
 RUN rm -rf /usr/share/nginx/html/*
