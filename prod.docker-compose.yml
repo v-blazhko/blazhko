@@ -3,6 +3,7 @@ services:
   my-app-prod:
     container_name: my-app-prod
     restart: unless-stopped
+    image: staticfloat/nginx-certbot
     build:
       context: .
       dockerfile: prod.Dockerfile
