@@ -23,13 +23,13 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
           port: 22
-          source: "app,backend,nginx,certbot,prod.Dockerfile,nginx.conf,prod.docker-compose.yml"
-          target: "/var/www/app"
+          source: "app,backend,nginx,certbot,prod.Dockerfile,prod.docker-compose.yml"
+          target: "www/app"
 
       - name: Docker-compose up via ssh
         uses: garygrossgarten/github-action-ssh@release
         with:
-          command: cd /var/www/app && docker-compose -f prod.docker-compose.yml up -d --remove-orphans --build
+          command: cd ~/www/app && docker-compose -f prod.docker-compose.yml up -d --remove-orphans --build
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
