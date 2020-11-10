@@ -13,10 +13,9 @@ FROM nginx:1.16.0-alpine
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 ## Remove default nginx index page
 RUN rm -rf /usr/share/nginx/html/*
-# Copy from the stahge 1
+# Copy from the stage 1
 
-COPY --from=build /app/static /etc/nginx/html/
-COPY --from=build /app/public /etc/nginx/html/public
+COPY --from=build /app/public /etc/nginx/html/
 COPY --from=build /app/dist /etc/nginx/html
 EXPOSE 80
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
