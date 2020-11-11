@@ -15,8 +15,7 @@ FROM nginx:1.15-alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy from the stage 1
-COPY --from=build /app/public /etc/nginx/html/
-COPY --from=build /app/dist /etc/nginx/html
+
 COPY --from=build /app/public /usr/share/nginx/html
 COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80
