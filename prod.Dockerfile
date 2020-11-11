@@ -9,7 +9,7 @@ COPY ./app /app
 RUN npm run build
 
 # production environment
-FROM nginx:1.15-alpine
+FROM nginx:1.15-alpine as nginx
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 ## Remove default nginx index page
 RUN rm -rf /usr/share/nginx/html/*
