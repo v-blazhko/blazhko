@@ -1,6 +1,11 @@
 #!/bin/bash
 
-domains="blazhko.tech"
+if ! [ -x "$(command -v docker-compose)" ]; then
+  echo 'Error: docker-compose is not installed.' >&2
+  exit 1
+fi
+
+domains=(blazhko.tech www.blazhko.tech)
 rsa_key_size=4096
 data_path="./data/certbot"
 email="veronica@blazhko.tech" # Adding a valid address is strongly recommended
@@ -34,7 +39,7 @@ echo
 
 
 echo "### Starting nginx ..."
-docker-compose up --force-recreate -d
+docker-compose up --force-recreate -d nginx
 echo
 
 echo "### Deleting dummy certificate for $domains ..."
