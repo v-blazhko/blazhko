@@ -9,14 +9,15 @@ COPY ./app /app
 RUN npm run build
 
 # production environment
-FROM nginx:1.15-alpine as nginx
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+FROM nginx:1.15-alpine
+#COPY ./data/app.conf /etc/nginx/nginx.conf
 ## Remove default nginx index page
 RUN rm -rf /usr/share/nginx/html/*
-# Copy from the stage 1
 
+# Copy from the stage 1
 COPY --from=build /app/public /etc/nginx/html/
 COPY --from=build /app/dist /etc/nginx/html
-
+COPY --from=build /app/public /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80
-CMD /bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'
+
