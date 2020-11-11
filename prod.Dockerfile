@@ -17,4 +17,6 @@ RUN rm -rf /usr/share/nginx/html/*
 
 COPY --from=build /app/public /etc/nginx/html/
 COPY --from=build /app/dist /etc/nginx/html
+
 EXPOSE 80
+CMD /bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'
