@@ -23,7 +23,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
           port: 22
-          source: "app,backend,data,prod.Dockerfile,docker-compose.yml"
+          source: "app,backend,data,prod.Dockerfile,golang.Dockerfile,docker-compose.yml"
           target: "/var/www/app"
 
       - name: Docker-compose up via ssh
