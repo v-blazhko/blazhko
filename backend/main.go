@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/v-blazhko/blazhko/api"
-	"github.com/v-blazhko/blazhko/controller"
+	"github.com/v-blazhko/blazhko/backend/api"
+	"github.com/v-blazhko/blazhko/backend/controller"
 	"net/http"
 	"os"
 )
