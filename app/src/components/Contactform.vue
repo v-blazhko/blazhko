@@ -66,7 +66,6 @@
 			}
 		},
 
-	// our methods
 	methods: {
 		handleError: function(error) {
 			this.err = this.strip(error);
@@ -105,7 +104,7 @@
 			var self = this;	
 			console.log(self);		
 			this.$refs.myModalRef.show();
-			this.$axios.post('js/send.php', formData, {headers: {'Content-Type': 'multipart/form-data'}})
+			this.$axios.post('localhost:3030/api/contact', formData, {headers: {'Content-Type': 'application/json'}})
 			.then(response =>{
 				this.handleResponse(response.data);
 			})

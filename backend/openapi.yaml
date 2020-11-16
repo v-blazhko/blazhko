@@ -1,0 +1,29 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: blazhko.tech API
+  description: A sample blazhko.tech API
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: http://blazhko.tech:3030/api
+paths:
+  /api/contact:
+    post:
+      description: Send data to message handler
+      requestBody:
+        description: Message to handle
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: response from contact form
+          content:
+            application/json:
+              schema:
+                type: string
+

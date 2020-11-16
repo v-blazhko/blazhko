@@ -1,7 +1,8 @@
 package main
 
 import (
-	"fmt"
+	"github.com/v-blazhko/blazhko/api"
+	"github.com/v-blazhko/blazhko/controller"
 	"net/http"
 	"os"
 )
@@ -11,8 +12,9 @@ func main() {
 	if PORT = os.Getenv("PORT"); PORT == "" {
 		PORT = "3000"
 	}
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		_, _ = fmt.Fprintf(w, "Hello World from path: %s\n", r.URL.Path)
-	})
-	_ = http.ListenAndServe(":"+PORT, nil)
+
+	c := controller.Controller{}
+	handler := api.Handler(&c)
+
+	_ = http.ListenAndServe(":"+PORT, handler)
 }
