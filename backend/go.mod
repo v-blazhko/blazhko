@@ -1,4 +1,4 @@
-module github.com/v-blazhko/blazhko
+module github.com/v-blazhko/blazhko/backend
 
 go 1.15
 
