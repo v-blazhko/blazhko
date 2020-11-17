@@ -106,7 +106,6 @@
 			console.log(self);		
 			this.$refs.myModalRef.show();
 			this.$axios.post('http://blazhko.tech:3030/api/contact', rawData, {headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}})
-			// this.$axios.post('localhost:3000/api/contact', formData, {headers: {'Content-Type': 'application/json'}})
 			.then(response =>{
 				this.handleResponse(response.data);
 			})
