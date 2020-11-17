@@ -2,10 +2,10 @@
 FROM node:15.1.0-alpine as build
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
-COPY ./app/package.json /app/package.json
+COPY ./frontend/package.json ./package.json
 RUN npm install
 RUN npm install @vue/cli@3.7.0 -g
-COPY ./app /app
+COPY ./frontend ./
 RUN npm run build
 
 # production environment

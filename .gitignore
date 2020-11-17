@@ -1,7 +1,7 @@
 .DS_Store
-app/node_modules/
-app/npm-debug.log
-app/yarn-error.log
+frontend/node_modules/
+frontend/npm-debug.log
+frontend/yarn-error.log
 .env
 
 # Editor directories and files

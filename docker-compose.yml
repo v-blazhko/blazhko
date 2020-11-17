@@ -35,3 +35,24 @@ services:
       - "3030:3001"
     environment:
       PORT: 3001
+
+#  mysql:
+#    image: mysql:latest
+#    command: --default-authentication-plugin=mysql_native_password
+#    env_file:
+#      - .env
+#    volumes:
+#      - goinvest-volume:/var/lib/mysql
+#    ports:
+#      - 3306:3306
+#
+#  adminer:
+#    image: adminer:latest
+#    env_file:
+#      - .env
+#    environment:
+#      ADMINER_DEFAULT_SERVER: mysql
+#    depends_on:
+#      - mysql
+#    ports:
+#      - 8080:8080
