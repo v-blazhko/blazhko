@@ -10,15 +10,13 @@ RUN npm run build
 
 # production environment
 FROM nginx:1.15-alpine
-COPY ./data/nginx/app.conf /etc/nginx/nginx.conf
+#COPY ./data/nginx/app.conf /etc/nginx/nginx.conf
 ## Remove default nginx index page
-RUN rm -rf /usr/share/nginx/html/*
+#RUN rm -rf /usr/share/nginx/html/*
 
 # Copy from the stage 1
 
 COPY --from=build /app/public /usr/share/nginx/html
 COPY --from=build /app/dist /usr/share/nginx/html
-EXPOSE 80
-EXPOSE 443
-
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
