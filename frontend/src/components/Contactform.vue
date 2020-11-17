@@ -96,6 +96,7 @@
 			// 	msg: this.msg,
 			// 	lang: this.$lang.getLang()
 			// };
+
 			let rawData = this.msg;
 
 			rawData = JSON.stringify(rawData);
