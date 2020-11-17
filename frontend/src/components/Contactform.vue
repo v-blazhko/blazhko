@@ -90,12 +90,13 @@
 			console.log({ clientname: this.clientname, email: this.email, msg: this.msg, lang: this.$lang.getLang() });
 			console.log(this);
 
-			let rawData = {
-				clientname: this.clientname,
-				email: this.email,
-				msg: this.msg,
-				lang: this.$lang.getLang()
-			};
+			// let rawData = {
+			// 	clientname: this.clientname,
+			// 	email: this.email,
+			// 	msg: this.msg,
+			// 	lang: this.$lang.getLang()
+			// };
+			let rawData = this.msg;
 
 			rawData = JSON.stringify(rawData);
 			let formData = new FormData();
@@ -104,7 +105,8 @@
 			var self = this;	
 			console.log(self);		
 			this.$refs.myModalRef.show();
-			this.$axios.post('localhost:3030/api/contact', formData, {headers: {'Content-Type': 'application/json'}})
+			this.$axios.post('http://127.0.0.1:3000/api/contact', rawData, {headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}})
+			// this.$axios.post('localhost:3000/api/contact', formData, {headers: {'Content-Type': 'application/json'}})
 			.then(response =>{
 				this.handleResponse(response.data);
 			})
