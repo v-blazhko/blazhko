@@ -106,7 +106,7 @@
 			var self = this;	
 			console.log(self);		
 			this.$refs.myModalRef.show();
-			this.$axios.post('http://blazhko.tech/api/contact', rawData, {headers: {'Content-Type': 'application/json'}})
+			this.$axios.post('https://blazhko.tech/api/contact', rawData, {headers: {'Content-Type': 'application/json'}})
 			.then(response =>{
 				this.handleResponse(response.data);
 			})
