@@ -48,7 +48,20 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    port: 8888,
+    noInfo: true,
+    proxy: {
+      '/api': {
+        target: {
+          host: "0.0.0.0",
+          protocol: 'http:',
+          port: 8080
+        },
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
   },
   performance: {
     hints: false

@@ -19,7 +19,7 @@
 							<div class="row box-input">
 								<div class="col-md-6 col-sm-6 col-xs-12 fix-left">
 									<div class="form-group">
-										<input type="text" name="clientname" v-model="clientname"  class="form-control" required="true" :placeholder="$lang.messages.yname" autocomplete="off">
+										<input type="text" name="clientname" v-model="clientname"  class="form-control" required="true" :placeholder="$lang.messages.yname" autocomplete="on">
 									</div>
 								</div>
 								<div class="col-md-6 col-sm-6 col-xs-12 fix-right">
@@ -106,25 +106,17 @@
 			var self = this;	
 			console.log(self);		
 			this.$refs.myModalRef.show();
-			this.$axios.post('http://blazhko.tech:3030/api/contact', rawData, {headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}})
+			this.$axios.post('/api/contact', rawData, {headers: {'Content-Type': 'application/json'}})
 			.then(response =>{
 				this.handleResponse(response.data);
 			})
 			.catch(error =>{
 				this.handleError(error);
 			});
-
-
 			this.msg = '';
 			this.clientname = '';
 			this.email = '';
-			
-
-			
 		}
-
-		
-
 	}
 }
 
