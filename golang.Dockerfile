@@ -12,5 +12,5 @@ COPY ./backend .
 RUN go build -o main .
 WORKDIR /dist
 RUN cp /build/main .
-EXPOSE 3001
+EXPOSE 3000
 CMD ["/dist/main"]
