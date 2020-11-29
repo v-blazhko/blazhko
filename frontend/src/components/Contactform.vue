@@ -40,13 +40,13 @@
                 <textarea class="form-control" name="message" v-model="message" rows="2" required="true"
                           :placeholder="$lang.messages.ymsg" autocomplete="off"></textarea>
               </div>
-              <div class="form-group row">
-                <div class="col-sm-10">
-                  <vue-recaptcha ref="recaptcha"
-                                 @verify="onVerify" sitekey="6Le9FzYUAAAAAAg0-5kiM4XoPtglQeywXAAb7EKh">
-                  </vue-recaptcha>
-                </div>
-              </div>
+              <vue-recaptcha
+                  ref="invisibleRecaptcha"
+                  @verify="onVerify"
+                  @expired="onExpired"
+                  size="invisible"
+                  :sitekey="sitekey">
+              </vue-recaptcha>
               <button id="submit" type="submit" class="btn btn-info col-md-6 col-sm-6 col-xs-12">
                 {{ $lang.messages.send }}
               </button>
@@ -64,6 +64,7 @@
 <script>
 
 import VueRecaptcha from "vue-recaptcha";
+
 export default {
   name: 'contactform',
   data: function () {
@@ -74,7 +75,7 @@ export default {
       err: '',
       resp: '',
       modalBody: null,
-      robot: false
+      sitekey: '6Le9FzYUAAAAAAg0-5kiM4XoPtglQeywXAAb7EKh'
     }
   },
 
@@ -92,7 +93,15 @@ export default {
 
   methods: {
     onVerify: function (response) {
-      if (response) this.robot = true;
+      console.log('Verify: ' + response)
+    },
+
+    onExpired: function () {
+      console.log('Expired')
+    },
+
+    resetRecaptcha() {
+      this.$refs.recaptcha.reset()
     },
 
     handleError: function () {
@@ -115,31 +124,30 @@ export default {
     },
 
     processForm: function () {
-      if (this.robot) {
-        this.resp = '';
-        this.err = '';
-        let rawData = {
-          name: this.name,
-          email: this.email,
-          message: this.message,
-          lang: this.$lang.getLang()
-        };
+      this.$refs.invisibleRecaptcha.execute()
+      this.resp = '';
+      this.err = '';
+      let rawData = {
+        name: this.name,
+        email: this.email,
+        message: this.message,
+        lang: this.$lang.getLang()
+      };
 
-        rawData = JSON.stringify(rawData);
-        let formData = new FormData();
-        formData.append('data', rawData);
+      rawData = JSON.stringify(rawData);
+      let formData = new FormData();
+      formData.append('data', rawData);
 
-        this.$axios.post('/api/contact', rawData, {headers: {'Content-Type': 'application/json'}})
-            .then(response => {
-              this.handleResponse(response.status);
-            })
-            .catch(error => {
-              this.handleError(error);
-            });
-        this.message = '';
-        this.name = '';
-        this.email = '';
-      }
+      this.$axios.post('/api/contact', rawData, {headers: {'Content-Type': 'application/json'}})
+          .then(response => {
+            this.handleResponse(response.status);
+          })
+          .catch(error => {
+            this.handleError(error);
+          });
+      this.message = '';
+      this.name = '';
+      this.email = '';
     }
   }
 }
