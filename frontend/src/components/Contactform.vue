@@ -110,9 +110,17 @@ export default {
 
     handleResponse: function (responseCode) {
       if ((responseCode < 300) && (responseCode > 199)) {
+        if (this.lang === 'ru') {
+          this.resp = "Спасибо за сообщение! Очень скоро я свяжусь с вами :)"
+        } else {
         this.resp = "Thanks for submitting your message! I will reach out to you as fast as possible :)"
+          }
       } else {
-        this.resp = "An error occurred while submitting your response"
+        if (this.lang === 'ru') {
+          this.resp = "Что-то пошло не так. Попробуйте ещё раз."
+        } else {
+          this.resp = "An error occurred while submitting your response"
+        }
       }
       this.$refs.myModalRef.show();
     },
@@ -148,6 +156,7 @@ export default {
       this.message = '';
       this.name = '';
       this.email = '';
+      this.resetRecaptcha();
     }
   }
 }

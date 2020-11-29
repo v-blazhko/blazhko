@@ -41,12 +41,12 @@ func (c *Controller) PostApiContact(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = mail.SendToMyself(contact.Message, contact.Name, contact.Email)
-	if err != nil {
-		log.Printf("Error sending email: %s", err)
-		w.WriteHeader(http.StatusInternalServerError)
-		return
-	}
+	go func() {
+		err = mail.SendToMyself(contact.Message, contact.Name, contact.Email)
+		if err != nil {
+			log.Printf("Error sending email: %s", err)
+		}
+	}()
 
 	w.WriteHeader(http.StatusOK)
 }
