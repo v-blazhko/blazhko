@@ -13,7 +13,8 @@ import Skill from '../src/components/Skill.vue'
 import axios from 'axios'
 import VueYaMetrica from 'vue-ya-metrica'
 import VueAxios from 'vue-axios'
-import VueYandexMetrika from 'vue-yandex-metrika'     
+import VueYandexMetrika from 'vue-yandex-metrika'
+import VueRecaptcha from 'vue-recaptcha'
 Vue.prototype.$axios = axios
 window.axios = require('axios');
 
@@ -31,6 +32,7 @@ Vue.component('Aboutme', Aboutme)
 Vue.component('Navbar', Navbar)
 Vue.component('VueYaMetrica', VueYaMetrica)
 Vue.component('Contactform', Contactform)
+Vue.component('VueRecaptcha', VueRecaptcha)
 Vue.component('Game', Game)
 Vue.component('Skill', Skill)
 Vue.component('Myfooter', Myfooter)
