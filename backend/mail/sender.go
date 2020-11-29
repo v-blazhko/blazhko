@@ -25,7 +25,7 @@ func SendToMyself(authorMessage string, authorName string, authorEmail string) e
 	}
 
 	subject := "New blazhko.tech Message"
-	body := fmt.Sprintf("Author: %s (%s) \n Message: %s", authorName, authorEmail, authorMessage)
+	body := fmt.Sprintf("Author: %s (%s) \nMessage: %s", authorName, authorEmail, authorMessage)
 
 	headers := make(map[string]string)
 	headers["From"] = from.String()
