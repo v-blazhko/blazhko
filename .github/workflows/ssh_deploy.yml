@@ -16,7 +16,7 @@ jobs:
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v1
         with:
-          envkey_MYSQL_ROOT_PASSWORD: ${{ secrets.ROOT_PASSWORD }}
+          envkey_MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
           envkey_MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE}}
           envkey_MYSQL_USER: ${{ secrets.MYSQL_USER}}
           envkey_MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
