@@ -109,7 +109,6 @@ export default {
       let formData = new FormData();
       formData.append('data', rawData);
 
-      this.$refs.myModalRef.show();
       this.$axios.post('/api/contact', rawData, {headers: {'Content-Type': 'application/json'}})
           .then(response => {
             this.handleResponse(response.status);
@@ -123,7 +122,6 @@ export default {
     }
   }
 }
-
 </script>
 
 <style scoped>
