@@ -22,7 +22,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
           port: 22
-          source: "frontend,backend,data,prod.Dockerfile,golang.Dockerfile,docker-compose.yml"
+          source: "frontend,backend,data,prod.Dockerfile,golang.Dockerfile,docker-compose.yml,.env"
           target: "/var/www/app"
 
       - name: Make envfile
@@ -33,7 +33,18 @@ jobs:
           envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
           some_other_variable: foobar
           directory: /github/workspace
-          file_name: .env.local
+          file_name: .env.custom
+
+      - name: Copy .env.custom
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
+          port: 22
+          source: "/github/workspace/.env.custom"
+          target: "/var/www/app"
 
       - name: Docker-compose build
         uses: garygrossgarten/github-action-ssh@release
