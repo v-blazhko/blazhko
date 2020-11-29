@@ -1,27 +1,89 @@
 package mail
 
 import (
+	"crypto/tls"
 	"fmt"
-	"log"
+	"net"
+	"net/mail"
 	"net/smtp"
 	"os"
 )
 
-func SendToMyself(message string, authorName string, authorEmail string) error {
-	from := os.Getenv("MAIL_FROM")
+func SendToMyself(authorMessage string, authorName string, authorEmail string) error {
+	fromAddress := os.Getenv("MAIL_FROM")
 	fromPassword := os.Getenv("MAIL_FROM_PASSWORD")
-	imapHost := os.Getenv("MAIL_IMAP_HOST")
+	toAddress := os.Getenv("MAIL_TO")
 	smtpHost := os.Getenv("MAIL_SMTP_HOST")
-	to := []string{os.Getenv("MAIL_TO")}
-	auth := smtp.PlainAuth("", from, fromPassword, imapHost)
+	auth := smtp.PlainAuth("", fromAddress, fromPassword, smtpHost)
 
-	contents := fmt.Sprintf("New blazhko.tech message!\n"+
-		"Author: %s (%s)"+
-		"Message: %s", authorName, authorEmail, message)
-	err := smtp.SendMail(smtpHost, auth, from, to, []byte(contents))
-	if err != nil {
-		log.Fatal(err)
+	from := mail.Address{
+		Name:    "Common blazhko.tech mailer",
+		Address: fromAddress,
+	}
+	to := mail.Address{
+		Address: toAddress,
 	}
 
-	return err
+	subject := "New blazhko.tech authorMessage"
+	body := fmt.Sprintf("Author: %s (%s) \n Message: %s", authorName, authorEmail, authorMessage)
+
+	headers := make(map[string]string)
+	headers["From"] = from.String()
+	headers["To"] = to.String()
+	headers["Subject"] = subject
+
+	message := ""
+	for k, v := range headers {
+		message += fmt.Sprintf("%s: %s\r\n", k, v)
+	}
+	message += "\r\n" + body
+
+	serverName := smtpHost
+	host, _, _ := net.SplitHostPort(serverName)
+
+	tlsConfig := &tls.Config{
+		InsecureSkipVerify: true,
+		ServerName:         host,
+	}
+
+	conn, err := tls.Dial("tcp", serverName, tlsConfig)
+	if err != nil {
+		return err
+	}
+
+	c, err := smtp.NewClient(conn, host)
+	if err != nil {
+		return err
+	}
+
+	if err = c.Auth(auth); err != nil {
+		return err
+	}
+
+	if err = c.Mail(from.Address); err != nil {
+		return err
+	}
+
+	if err = c.Rcpt(to.Address); err != nil {
+		return err
+	}
+
+	w, err := c.Data()
+	if err != nil {
+		return err
+	}
+
+	_, err = w.Write([]byte(authorMessage))
+	if err != nil {
+		return err
+	}
+
+	err = w.Close()
+	if err != nil {
+		return err
+	}
+
+	_ = c.Quit()
+
+	return nil
 }
