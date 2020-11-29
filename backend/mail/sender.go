@@ -14,17 +14,17 @@ func SendToMyself(authorMessage string, authorName string, authorEmail string) e
 	fromPassword := os.Getenv("MAIL_FROM_PASSWORD")
 	toAddress := os.Getenv("MAIL_TO")
 	smtpHost := os.Getenv("MAIL_SMTP_HOST")
-	auth := smtp.PlainAuth("", fromAddress, fromPassword, smtpHost)
 
 	from := mail.Address{
 		Name:    "Common blazhko.tech mailer",
 		Address: fromAddress,
 	}
 	to := mail.Address{
+		Name:    "Veronica",
 		Address: toAddress,
 	}
 
-	subject := "New blazhko.tech authorMessage"
+	subject := "New blazhko.tech Message"
 	body := fmt.Sprintf("Author: %s (%s) \n Message: %s", authorName, authorEmail, authorMessage)
 
 	headers := make(map[string]string)
@@ -38,15 +38,18 @@ func SendToMyself(authorMessage string, authorName string, authorEmail string) e
 	}
 	message += "\r\n" + body
 
-	serverName := smtpHost
-	host, _, _ := net.SplitHostPort(serverName)
+	servername := smtpHost
 
-	tlsConfig := &tls.Config{
+	host, _, _ := net.SplitHostPort(servername)
+
+	auth := smtp.PlainAuth("", fromAddress, fromPassword, host)
+
+	tlsconfig := &tls.Config{
 		InsecureSkipVerify: true,
 		ServerName:         host,
 	}
 
-	conn, err := tls.Dial("tcp", serverName, tlsConfig)
+	conn, err := tls.Dial("tcp", servername, tlsconfig)
 	if err != nil {
 		return err
 	}
@@ -73,7 +76,7 @@ func SendToMyself(authorMessage string, authorName string, authorEmail string) e
 		return err
 	}
 
-	_, err = w.Write([]byte(authorMessage))
+	_, err = w.Write([]byte(message))
 	if err != nil {
 		return err
 	}
