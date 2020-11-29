@@ -40,9 +40,9 @@ services:
       - .env
       - .env.local
     volumes:
-      - goinvest-volume:/var/lib/mysql
+      - govolume:/var/lib/mysql
     ports:
       - 3306:3306
 
 volumes:
-  goinvest-volume:
+  govolume:
