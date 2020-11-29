@@ -31,7 +31,7 @@ module.exports = {
         web: {
             pos: 'Web Developer',
             place: 'Freelance, St. Petersburg (Russia)',
-            time: 'September 2015 – Present',
+            time: 'September 2015 – January 2019',
             task3: '- development of technical specifications',
             task1: '- frontend development (ES6, jQuery, Vue.js, CSS, LESS, webpack, Node.js)',
             task2: '- backend development (PHP, Wordpress, Python, UNIX configuration)'
@@ -39,7 +39,7 @@ module.exports = {
         emb: {
             pos: 'Embedded Systems Engineer',
             place: 'Algos-Foods Ltd., St. Petersburg (Russia)',
-            time: 'September 2018 – Present',
+            time: 'September 2018 – January 2019',
             task1: '- developing embedded systems based on microcomputers (OrangePI, RaspberryPI, Beaglebone)',
             task2: '- implementing software for controlling remote devices and collecting measurements from various sensors',
             task3: '- constructing physical devices (requires fair Physics and Electronics knowledge, as well soldering skills)'

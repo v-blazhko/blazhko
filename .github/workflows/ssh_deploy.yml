@@ -10,12 +10,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE,
-      # so your workflow can access it
+      # Checking out the repository
       - uses: actions/checkout@master
 
       # Copying files and artifacts via SSH
-      - name: copy file via ssh key
+      - name: Copy files
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.REMOTE_HOST }}
@@ -26,10 +25,29 @@ jobs:
           source: "frontend,backend,data,prod.Dockerfile,golang.Dockerfile,docker-compose.yml"
           target: "/var/www/app"
 
-      - name: Docker-compose up via ssh
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_DEBUG: false
+          envkey_SOME_API_KEY: "123456abcdef"
+          envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          some_other_variable: foobar
+          directory: /github/workspace
+          file_name: .env.local
+
+      - name: Docker-compose build
         uses: garygrossgarten/github-action-ssh@release
         with:
-          command: cd /var/www/app && docker-compose -f docker-compose.yml up -d --remove-orphans --build
+          command: cd /var/www/app && docker-compose -f docker-compose.yml build --pull
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
+          privateKey: ${{ secrets.SSH_KEY }}
+
+      - name: Docker-compose up
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: cd /var/www/app && docker-compose -f docker-compose.yml up -d --remove-orphans
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}

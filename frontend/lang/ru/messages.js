@@ -23,7 +23,7 @@ module.exports = {
         beauit: {
             pos: 'Junior бэкенд-разработчик',
             place: 'Tektosoft (BeauIT)',
-            time: 'January 2019 – August 2019',
+            time: 'Январь 2019 – Август 2019',
             task1: '- бэкенд-разработка с PHP + Symfony, Yii2',
             task2: '- разработка REST API',
             task3: '- разработка документации, работа с AWS, Docker'
@@ -31,7 +31,7 @@ module.exports = {
         web: {
             pos: 'Веб-разработчик',
             place: 'Фриланс, Санкт-Петербург, Россия',
-            time: 'Сентябрь 2015 – настоящее время',
+            time: 'Сентябрь 2015 – Январь 2019',
             task3: '- разработка техничских спецификаций',
             task1: '- frontend разработка (ES6, jQuery, Vue.js, CSS, LESS, webpack, Node.js)',
             task2: '- backend разработка (PHP, Wordpress, Python, UNIX configuration)'
@@ -39,7 +39,7 @@ module.exports = {
         emb: {
             pos: 'Разработчик Embedded Systems',
             place: 'Algos-Foods Ltd., Санкт-Петербург, Россия',
-            time: 'Сентябрь 2018 – настоящее время',
+            time: 'Сентябрь 2018 – Январь 2019',
             task1: '- developing embedded systems based on microcomputers (OrangePI, RaspberryPI, Beaglebone)',
             task2: '- implementing software for controlling remote devices and collecting measurements from various sensors',
             task3: '- constructing physical devices (requires fair Physics and Electronics knowledge, as well soldering skills)'

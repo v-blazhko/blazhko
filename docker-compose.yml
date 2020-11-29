@@ -6,7 +6,6 @@ services:
       dockerfile: prod.Dockerfile
     restart: unless-stopped
     volumes:
-      #- ./data/nginx:/etc/nginx/conf.d
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
     ports:
@@ -31,28 +30,19 @@ services:
     volumes:
       - ./backend:/go/src/app
     working_dir: /go/src/app
-    #ports:
-    #  - "3000:3000"
     environment:
       PORT: 3000
 
-#  mysql:
-#    image: mysql:latest
-#    command: --default-authentication-plugin=mysql_native_password
-#    env_file:
-#      - .env
-#    volumes:
-#      - goinvest-volume:/var/lib/mysql
-#    ports:
-#      - 3306:3306
-#
-#  adminer:
-#    image: adminer:latest
-#    env_file:
-#      - .env
-#    environment:
-#      ADMINER_DEFAULT_SERVER: mysql
-#    depends_on:
-#      - mysql
-#    ports:
-#      - 8080:8080
+  mysql:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    env_file:
+      - .env
+      - .env.local
+    volumes:
+      - goinvest-volume:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+volumes:
+  goinvest-volume:

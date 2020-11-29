@@ -7,7 +7,7 @@ info:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-  - url: http://blazhko.tech:3030/api
+  - url: https://blazhko.tech/api
 paths:
   /api/contact:
     post:
@@ -18,7 +18,7 @@ paths:
         content:
           application/json:
             schema:
-              type: string
+              $ref: '#/components/schemas/ClientContact'
       responses:
         '200':
           description: response from contact form
@@ -27,3 +27,25 @@ paths:
               schema:
                 type: string
 
+components:
+  schemas:
+    ClientContact:
+      title: Client contact request
+      type: object
+      properties:
+        name:
+          type: string
+          description: contact name
+        email:
+          type: string
+          description: email
+        message:
+          type: string
+          description: message
+        lang:
+          type: string
+          description: preferred language
+      required:
+        - name
+        - email
+        - message
