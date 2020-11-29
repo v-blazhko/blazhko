@@ -25,19 +25,19 @@
               <div class="row box-input">
                 <div class="col-md-6 col-sm-6 col-xs-12 fix-left">
                   <div class="form-group">
-                    <input type="text" name="name" v-model="name" class="form-control" required="true"
+                    <input type="text" name="name" v-model="name" class="form-control" required
                            :placeholder="$lang.messages.yname" autocomplete="on">
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12 fix-right">
                   <div class="form-group">
-                    <input type="email" name="email" v-model="email" :placeholder="$lang.messages.yemail"
+                    <input type="email" name="email" v-model="email" :placeholder="$lang.messages.yemail" required
                            class="form-control">
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                <textarea class="form-control" name="message" v-model="message" rows="2" required="true"
+                <textarea class="form-control" name="message" v-model="message" rows="2" required
                           :placeholder="$lang.messages.ymsg" autocomplete="off"></textarea>
               </div>
               <vue-recaptcha
@@ -100,10 +100,6 @@ export default {
       console.log('Expired')
     },
 
-    resetRecaptcha() {
-      this.$refs.recaptcha.reset()
-    },
-
     handleError: function () {
       this.err = "An error occurred while submitting your response";
     },
@@ -156,7 +152,6 @@ export default {
       this.message = '';
       this.name = '';
       this.email = '';
-      this.resetRecaptcha();
     }
   }
 }
@@ -173,21 +168,21 @@ ul li {
 }
 
 i.fas, i.fa, i.fab {
-  padding: 0px 8px 0px 8px;
+  padding: 0 8px;
   max-width: 2em;
 }
 
 ul > li {
-  padding-left: 0em;
+  padding-left: 0;
 }
 
 @media (max-width: 768px) {
   .jumbotron {
-    padding: 0em 0em 2em 0em;
+    padding: 0 0 2em 0;
   }
 
   .jumbotron .display-4 {
-    padding: 0.5em 0em 0.1em;
+    padding: 0.5em 0 0.1em;
   }
 }
 
