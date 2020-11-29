@@ -13,6 +13,16 @@ jobs:
       # Checking out the repository
       - uses: actions/checkout@master
 
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_DEBUG: false
+          envkey_SOME_API_KEY: "123456abcdef"
+          envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          some_other_variable: foobar
+          directory: .
+          file_name: .env.custom
+
       # Copying files and artifacts via SSH
       - name: Copy files
         uses: appleboy/scp-action@master
@@ -22,28 +32,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
           port: 22
-          source: "frontend,backend,data,prod.Dockerfile,golang.Dockerfile,docker-compose.yml,.env"
-          target: "/var/www/app"
-
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          envkey_DEBUG: false
-          envkey_SOME_API_KEY: "123456abcdef"
-          envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          some_other_variable: foobar
-          directory: /github/workspace
-          file_name: .env.custom
-
-      - name: Copy .env.custom
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
-          port: 22
-          source: "/github/workspace/.env.custom"
+          source: "frontend,backend,data,prod.Dockerfile,golang.Dockerfile,docker-compose.yml,.env,.env.custom"
           target: "/var/www/app"
 
       - name: Docker-compose build
