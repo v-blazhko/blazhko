@@ -86,6 +86,7 @@ export default {
       } else {
         this.resp = "An error occurred while submitting your response"
       }
+      this.$refs.myModalRef.show();
     },
 
     strip: function (html) {
@@ -112,11 +113,9 @@ export default {
       this.$axios.post('/api/contact', rawData, {headers: {'Content-Type': 'application/json'}})
           .then(response => {
             this.handleResponse(response.status);
-            this.$refs.myModalRef.show();
           })
           .catch(error => {
             this.handleError(error);
-            this.$refs.myModalRef.show();
           });
       this.message = '';
       this.name = '';
