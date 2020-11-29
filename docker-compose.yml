@@ -27,6 +27,9 @@ services:
       context: .
       dockerfile: golang.Dockerfile
     command: go run main.go
+    env_file:
+      - .env
+      - .env.local
     volumes:
       - ./backend:/go/src/app
     working_dir: /go/src/app
