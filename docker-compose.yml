@@ -1,6 +1,7 @@
 version: '3'
 services:
   nginx:
+    container_name: nginx
     build:
       context: .
       dockerfile: prod.Dockerfile
@@ -14,6 +15,7 @@ services:
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 
   certbot:
+    container_name: certbot
     image: certbot/certbot
     restart: unless-stopped
     volumes:
@@ -37,13 +39,17 @@ services:
       PORT: 3000
 
   mysql:
-    image: mysql:latest
+    container_name: mysql
+    build:
+      context: .
+      dockerfile: mysql.Dockerfile
     command: --default-authentication-plugin=mysql_native_password
     env_file:
       - .env
       - .env.local
     volumes:
       - govolume:/var/lib/mysql
+      - /migrations:/docker-entrypoint-migrations.d/
     ports:
       - 3306:3306
 
