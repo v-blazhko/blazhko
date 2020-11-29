@@ -49,7 +49,7 @@ services:
       - .env.local
     volumes:
       - govolume:/var/lib/mysql
-      - /migrations:/docker-entrypoint-migrations.d/
+      - ./migrations:/docker-entrypoint-migrations.d/
     ports:
       - 3306:3306
 
