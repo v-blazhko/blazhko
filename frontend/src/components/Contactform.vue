@@ -64,6 +64,7 @@
 <script>
 
 import VueRecaptcha from "vue-recaptcha";
+import {meta as $lang} from "eslint/lib/rules/getter-return";
 
 export default {
   name: 'contactform',
@@ -100,23 +101,17 @@ export default {
       console.log('Expired')
     },
 
-    handleError: function () {
-      this.err = "An error occurred while submitting your response";
+    handleError: function (error) {
+      console.log(error);
+      this.resp = $lang.messages.messageError;
+      this.$refs.myModalRef.show();
     },
 
     handleResponse: function (responseCode) {
       if ((responseCode < 300) && (responseCode > 199)) {
-        if (this.$lang.getLang() === 'ru') {
-          this.resp = "Спасибо за сообщение! Очень скоро я свяжусь с вами :)"
-        } else {
-        this.resp = "Thanks for submitting your message! I will reach out to you as fast as possible :)"
-          }
+        this.resp = $lang.messages.messageSuccess;
       } else {
-        if (this.$lang.getLang() === 'ru') {
-          this.resp = "Что-то пошло не так. Попробуйте ещё раз."
-        } else {
-          this.resp = "An error occurred while submitting your response"
-        }
+        this.resp = $lang.messages.messageError;
       }
       this.$refs.myModalRef.show();
     },

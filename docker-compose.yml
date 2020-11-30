@@ -7,8 +7,8 @@ services:
       dockerfile: prod.Dockerfile
     restart: unless-stopped
     volumes:
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
+      - ./docker/certbot/conf:/etc/letsencrypt
+      - ./docker/certbot/www:/var/www/certbot
     ports:
       - "80:80"
       - "443:443"
@@ -19,15 +19,15 @@ services:
     image: certbot/certbot
     restart: unless-stopped
     volumes:
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
+      - ./docker/certbot/conf:/etc/letsencrypt
+      - ./docker/certbot/www:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
   golang:
     container_name: golang
     build:
       context: .
-      dockerfile: golang.Dockerfile
+      dockerfile: docker/golang/golang.Dockerfile
     command: go run main.go
     env_file:
       - .env
@@ -42,16 +42,16 @@ services:
     container_name: mysql
     build:
       context: .
-      dockerfile: mysql.Dockerfile
+      dockerfile: docker/mysql/mysql.Dockerfile
     command: --default-authentication-plugin=mysql_native_password
     env_file:
       - .env
       - .env.local
     volumes:
-      - govolume:/var/lib/mysql
+      - db:/var/lib/mysql
       - ./migrations:/docker-entrypoint-migrations.d/
     ports:
       - 3306:3306
 
 volumes:
-  govolume:
+  db:

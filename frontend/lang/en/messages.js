@@ -78,6 +78,8 @@ module.exports = {
     },
     yname: 'Your name',
     yemail: 'Your email',
-    ymsg: 'Your message'
+    ymsg: 'Your message',
+    messageSuccess: 'Thanks for submitting your message! I will reach out to you as fast as possible :)',
+    messageError: 'An error occurred while submitting your response. Try trying again.'
 }
 
