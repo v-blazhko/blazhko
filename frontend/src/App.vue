@@ -58,38 +58,26 @@
 
             <h1 class="text-center">{{$lang.messages.skill}}</h1>
             <div class="container-fluid skills">
-                <skill cskill="Python" cclass=""></skill>
+                <skill cskill="Golang" cclass="greenish"></skill>
+                <skill cskill="Python 3" cclass=""></skill>
                 <skill cskill="Javascript" cclass="greenish"></skill>
                 <skill cskill="ES6" cclass="greenish"></skill>
-                <skill cskill="PHP7" cclass="greenish"></skill>
-                <skill cskill="MySQL" cclass="greyish"></skill>
+                <skill cskill="Databases" cclass="greyish"></skill>
                 <skill cskill="Docker" cclass=""></skill>
                 <skill cskill="ES6" cclass=""></skill>
                 <skill cskill="Vue.js" cclass="greenish"></skill>
-                <skill cskill="CSS" cclass=""></skill>
-                <skill cskill="LESS" cclass=""></skill>
-                <skill cskill="HTML" cclass=""></skill>
                 <skill cskill="Adobe Illustrator" cclass=""></skill>
-                <skill cskill="Python3" cclass="greenish"></skill>
                 <skill cskill="Matlab" cclass=""></skill>
-                <skill cskill="CMS Wordpress" cclass=""></skill>
+                <skill cskill="Docker" cclass=""></skill>
                 <skill cskill="Cisco" cclass=""></skill>
                 <skill cskill="Embedded systems" cclass=""></skill>
                 <skill cskill="Network administration" cclass="greyish"></skill>
                 <skill cskill="C/C++" cclass="greenish"></skill>
-                <skill cskill="Adobe Photoshop" cclass=""></skill>
-                <skill cskill="Microcontrollers" cclass="greenish"></skill>
-                <skill cskill="Raspberry PI" cclass=""></skill>
-                <skill cskill="Arduino" cclass=""></skill>
-                <skill cskill="Orange PI" cclass=""></skill>
+                <skill cskill="PHP" cclass=""></skill>
                 <skill cskill="Linux" cclass="greyish"></skill>
                 <skill cskill="AutoIT" cclass="greenish"></skill>
-                <skill cskill="Bootstrap4" cclass=""></skill>
-                <skill cskill="CMS Joomla" cclass=""></skill>
                 <skill cskill="Node.js" cclass="greenish"></skill>
-                <skill cskill="webpack" cclass="greenish"></skill>
-                <skill cskill="Apache" cclass="greyish"></skill>
-                <skill cskill="nginx" cclass="greyish"></skill>
+                <skill cskill="CI/CD" cclass="greenish"></skill>
                 <skill cskill="UX/UI" cclass="greenish"></skill>
             </div>
 
