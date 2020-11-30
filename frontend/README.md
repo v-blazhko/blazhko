@@ -1,4 +1,4 @@
-# blazhkov2
+# blazhko.tech
 
 ## Project setup
 ```
