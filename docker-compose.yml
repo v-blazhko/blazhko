@@ -6,6 +6,8 @@ services:
       context: .
       dockerfile: prod.Dockerfile
     restart: unless-stopped
+    environment:
+      - NODE_ENV=production
     volumes:
       - ./docker/certbot/conf:/etc/letsencrypt
       - ./docker/certbot/www:/var/www/certbot
