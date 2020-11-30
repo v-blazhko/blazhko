@@ -106,13 +106,13 @@ export default {
 
     handleResponse: function (responseCode) {
       if ((responseCode < 300) && (responseCode > 199)) {
-        if (this.lang === 'ru') {
+        if (this.$lang.getLang() === 'ru') {
           this.resp = "Спасибо за сообщение! Очень скоро я свяжусь с вами :)"
         } else {
         this.resp = "Thanks for submitting your message! I will reach out to you as fast as possible :)"
           }
       } else {
-        if (this.lang === 'ru') {
+        if (this.$lang.getLang() === 'ru') {
           this.resp = "Что-то пошло не так. Попробуйте ещё раз."
         } else {
           this.resp = "An error occurred while submitting your response"
