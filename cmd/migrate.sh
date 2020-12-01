@@ -2,20 +2,12 @@
 
 echo 'Starting migrations...'
 
-for i in {30..0}; do
-			if echo 'SELECT 1' | mysql -h"localhost" -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" &> /dev/null; then
-				break
-			fi
-			echo 'MySQL init process in progress...'
-			sleep 1
-		done
-
-SUCCESSFILE=/logs_migration.d/success.log
+SUCCESSFILE=./logs_migration.d/success.log
 if test ! -f "$SUCCESSFILE"; then
     touch "$SUCCESSFILE"
 fi
 
-for f in /docker-entrypoint-migrations.d/*.up.sql; do
+for f in ./docker-entrypoint-migrations.d/*.up.sql; do
 			has_migrated=$(find "$SUCCESSFILE" -type f -print | xargs grep "$f")
 			if [ -z "$has_migrated" ]
 			then
