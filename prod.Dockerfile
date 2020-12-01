@@ -1,5 +1,5 @@
 # build environment
-FROM node:15.1.0-alpine as build
+FROM node:lts-alpine as build
 WORKDIR /home/node/app
 ENV PATH /home/node/app/node_modules/.bin:$PATH
 COPY ./frontend/package.json ./package.json
@@ -9,7 +9,7 @@ COPY ./frontend ./
 RUN npm run build
 
 # production environment
-FROM nginx:1.15-alpine
+FROM nginx:stable-alpine
 COPY ./docker/nginx/app.conf /etc/nginx/conf.d/app.conf
 ## Remove default nginx index page
 RUN rm -rf /usr/share/nginx/html/*
