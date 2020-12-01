@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12 fix-right">
                   <div class="form-group">
-                    <input type="email" name="email" v-model="email" :placeholder="$lang.messages.yemail" required
+                    <input type="email" name="email" v-model="email" autocomplete="on" :placeholder="$lang.messages.yemail" required
                            class="form-control">
                   </div>
                 </div>
@@ -64,7 +64,6 @@
 <script>
 
 import VueRecaptcha from "vue-recaptcha";
-import {meta as $lang} from "eslint/lib/rules/getter-return";
 
 export default {
   name: 'contactform',
@@ -103,15 +102,15 @@ export default {
 
     handleError: function (error) {
       console.log(error);
-      this.resp = $lang.messages.messageError;
+      this.resp = this.$lang.messages.messageError;
       this.$refs.myModalRef.show();
     },
 
     handleResponse: function (responseCode) {
       if ((responseCode < 300) && (responseCode > 199)) {
-        this.resp = $lang.messages.messageSuccess;
+        this.resp = this.$lang.messages.messageSuccess;
       } else {
-        this.resp = $lang.messages.messageError;
+        this.resp = this.$lang.messages.messageError;
       }
       this.$refs.myModalRef.show();
     },
