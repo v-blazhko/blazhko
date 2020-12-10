@@ -14,7 +14,7 @@
                             <li>
                                 <h6><a target="_blank" href="#">{{$lang.messages.exp.nokia.pos}}</a></h6>
                                 <p><em href="#" class="">{{$lang.messages.exp.nokia.place}}</em></p>
-                                <p><em href="#" class="">{{$lang.messages.exp.web.time}}</em></p>
+                                <p><em href="#" class="">{{$lang.messages.exp.nokia.time}}</em></p>
                                 <p class="pl-2">{{$lang.messages.exp.nokia.task1}}</p>
                                 <p class="pl-2">{{$lang.messages.exp.nokia.task2}}</p>
                                 <p class="pl-2">{{$lang.messages.exp.nokia.task3}}</p>
@@ -22,7 +22,7 @@
                             <li>
                                 <h6><a target="_blank" href="#">{{$lang.messages.exp.beauit.pos}}</a></h6>
                                 <p><em href="#" class="">{{$lang.messages.exp.beauit.place}}</em></p>
-                                <p><em href="#" class="">{{$lang.messages.exp.web.time}}</em></p>
+                                <p><em href="#" class="">{{$lang.messages.exp.beauit.time}}</em></p>
                                 <p class="pl-2">{{$lang.messages.exp.beauit.task1}}</p>
                                 <p class="pl-2">{{$lang.messages.exp.beauit.task2}}</p>
                                 <p class="pl-2">{{$lang.messages.exp.beauit.task3}}</p>
