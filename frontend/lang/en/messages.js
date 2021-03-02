@@ -13,7 +13,7 @@ module.exports = {
     skill: 'Key skills',
     exp: {
         nokia: {
-            pos: 'Junior Software Engineer',
+            pos: 'SW Developer',
             place: 'Nokia Software',
             time: 'October 2019 – now',
             task1: '- backend development with Golang, Python',
